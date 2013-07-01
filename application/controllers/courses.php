@@ -10,13 +10,13 @@ class Courses extends CI_Controller {
 	public function index()
 	{
 		$courses = $this->courses_model->list_active_courses();
-		$this->page_loader('list_courses', $courses);
+		$this->page_loader('courses/list_courses', $courses);
 	}
 	
 	function page_loader($page, $content){
 		$view_data['view_data'] = $content;
 		$view_data['page'] = $page;
-		$this->load->view('main_view_cou', $view_data);
+		$this->load->view('courses/main_view_cou', $view_data);
 	}
 	
 	public function home()
