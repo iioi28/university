@@ -1,0 +1,54 @@
+#all-page{
+  border:0px solid red;
+	width:100%;
+	height:auto;
+	margin:auto;
+}
+#top-nav{
+	border:1px solid #ccc;
+	height:20px;
+	width:100%;
+	margin:auto;
+}
+#header{
+	border:1px solid #ccc;
+	background:#ccc;
+	height:78px;
+	width:100%;
+	margin:auto;
+	margin-top:5px;
+}
+#main-menu{
+	border:1px solid #ccc;
+	height:30px;
+	width:100%;
+	margin:auto;
+	margin-top:3px;
+}
+#left-bar{
+	border:1px solid #ccc;
+	background:#ccc;
+	height:80%;
+	width:16%;
+	margin:auto;
+	margin-top:0px;
+	float:left;
+	padding:15px;
+}
+#content{
+	border:1px solid #ccc;
+	height:auto;
+	width:80%;
+	margin:auto;
+	margin-top:10px;
+	float:right;
+	padding:0px;
+}
+#footer{
+	border:1px solid #ccc;
+	height:30px;
+	width:100%;
+	margin:auto;
+	margin-top:5px;
+	float:left;
+}
