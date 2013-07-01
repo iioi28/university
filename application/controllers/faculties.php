@@ -9,13 +9,13 @@ class Faculties extends CI_Controller {
 	public function index()
 	{
 		$faculties = $this->faculties_model->list_faculties();
-		$this->page_loader('list_faculties', $faculties);
+		$this->page_loader('faculties/list_faculties', $faculties);
 	}
 	
 	function page_loader($page, $content){
 		$view_data['view_data'] = $content;
 		$view_data['page'] = $page;
-		$this->load->view('main_view_fac', $view_data);
+		$this->load->view('faculties/main_view_fac', $view_data);
 	}
 	
 	public function home()
