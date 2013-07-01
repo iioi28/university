@@ -11,13 +11,13 @@ class Exams extends CI_Controller {
 	public function index()
 	{
 		$exams = $this->exams_model->list_active_exams();
-		$this->page_loader('list_exams', $exams);
+		$this->page_loader('exams/list_exams', $exams);
 	}
 	
 	function page_loader($page, $content){
 		$view_data['view_data'] = $content;
 		$view_data['page'] = $page;
-		$this->load->view('main_view_exa', $view_data);
+		$this->load->view('exams/main_view_exa', $view_data);
 	}
 	
 	public function home()
