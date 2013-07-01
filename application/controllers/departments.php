@@ -9,13 +9,13 @@ class Departments extends CI_Controller {
 	public function index()
 	{
 		$departments = $this->departments_model->get_departments();
-		$this->page_loader('list_departments', $departments);
+		$this->page_loader('departments/list_departments', $departments);
 	}
 	
 	function page_loader($page, $content){
 		$view_data['view_data'] = $content;
 		$view_data['page'] = $page;
-		$this->load->view('main_view_dep', $view_data);
+		$this->load->view('departments/main_view_dep', $view_data);
 	}
 	
 	public function home()
