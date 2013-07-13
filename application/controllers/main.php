@@ -9,6 +9,7 @@
  	function __construct()
 	{
 		parent::__construct();
+		$this->load->helper('template');
 		$this->lang->load('main','english');
 	}
 	function __destruct()
@@ -17,6 +18,9 @@
 	}
 	function index()
 	{
-		$this->load->view('main/main.php');
+		//load header section	
+		putheader();	
+		//load content section
+		putContent($this->load->view('main/main'));
 	}
  }
