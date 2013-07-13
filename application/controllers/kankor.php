@@ -9,10 +9,13 @@
  	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('crud_model');
 		$this->load->model('kankor_model');
 		$this->load->library('Ajax_pagination');
 		$this->load->library('form_validation');
+		$this->load->helper('template');
 		$this->lang->load('kankor','english');
+		$this->lang->load('main','english');
 	}
 	function __destruct()
 	{
@@ -21,14 +24,14 @@
 	function index()
 	{
 		$str_post_str = '&ajax=1';
-		//$recperpage = $this->config->item('recperpage');
-		$recperpage =1;
+		$recperpage = $this->config->item('recperpage');
+		//$recperpage =1;
 		$starting = $this->input->post('starting');
 		if(!$starting)
 		{
 			$starting = 0;
 		}
-		$get_allkankors = $this->kankor_model->getAllKankors($starting,$recperpage,FALSE);  
+		$get_allkankors = $this->crud_model->getAll($starting,$recperpage,FALSE,'konkors');  
 		if($get_allkankors)
 		{
 			$data['details'] = $get_allkankors;
@@ -39,7 +42,7 @@
 		}
 		
 		$this->ajax_pagination->make_search(
-			$this->kankor_model->getAllKankors_total(),
+			$this->crud_model->getAll_total('konkors'),
 			$starting,
 			$recperpage,
 			$this->lang->line('first'),
@@ -50,7 +53,7 @@
 			$this->lang->line('of'),
 			$this->lang->line('total'),
 			base_url().'kankor',
-			'kankors_div',
+			'content',
 			$str_post_str
 			);
 		$data['links'] = $this->ajax_pagination->anchors;
@@ -58,14 +61,14 @@
 		$data['page']  = $starting;
 		if($this->input->post('ajax')==1)
 		{
-			$this->load->view('kankors/kankor_list',$data);
+			putContent($this->load->view('kankors/kankor_list',$data));
 		}
 		else
 		{
-			//$this->load->view('template/header');
-	        //$this->load->view('template/menu');
-			$this->load->view('kankors/kankor_list',$data);
-			//$this->load->view('template/footer');
+			putHeader();
+			putLeft();
+			putContent($this->load->view('kankors/kankor_list',$data));	
+			
 		}
 	}
 	//function to add new kankor
